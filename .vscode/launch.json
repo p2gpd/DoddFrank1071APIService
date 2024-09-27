@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch index.js",
+            "name": "debug index.js",
             "skipFiles": [
                 "<node_internals>/**"
             ],
@@ -17,7 +17,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch test.js",
+            "name": "debug test.js",
             "skipFiles": [
                 "<node_internals>/**"
             ],

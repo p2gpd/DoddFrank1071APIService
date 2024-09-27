@@ -1,7 +1,8 @@
-/* api test */
+/* db api test */
 import logger from '../logger.js'
 import DbApi from '../dbapi.js'
-const dbapi = new DbApi() //temp
+
+const dbapi = new DbApi() 
 
 let newCustId = await dbapi.getNext1071Id(1234885)
 let sampleBusinessOwnershipMetrics = {
@@ -33,36 +34,27 @@ let sampleOwnerDemographics = {
 	doesNotWishToProvideRace: 0
 }
 
+let genders = await dbapi.getGenderLookupData()
+logger.info(genders)
+
+let hispanicLookupData = await dbapi.getHispanicOriginLookupData()
+logger.info(hispanicLookupData)
+
+let asianLookupData = await dbapi.getAsianOriginLookupData()
+logger.info(asianLookupData)
+
+let blackLookupData = await dbapi.getBlackOriginLookupData()
+logger.info(blackLookupData)
+
+let hawaiianPacificLookupData = await dbapi.getBlackOriginLookupData()
+logger.info(hawaiianPacificLookupData)
+
+let allLookupData = await dbapi.getAllLookupData()
+logger.info(allLookupData)
+
 let result1 = await dbapi.addBusinessOwnershipMetrics(sampleBusinessOwnershipMetrics)
 logger.info(result1)
+
 let result2 = await dbapi.addBusinessOwnerDemographics(sampleOwnerDemographics)
-logger.info(result1)
+logger.info(result2)
 logger.info('test commplete')
-
-
-/*
-const sql = require("msnodesqlv8");
-
-// Replace the following parameters with your actual database information.
-const server = "AGF-P2GPD-LA";
-const database = "registrationDb";
-const userName = "AGFIRST\P2GPD";
-const password = "11Easterly!";
-
-const connectionString = `Server=${server};Database=${database};UID=${userName};PWD=${password};Driver={SQL Server Native Client 11.0}`;
-const query = "SELECT xxx FROM [dbo].[table_name]";
-
-try {
-    sql.query(connectionString, query, (err, rows) => {
-        if (err) {
-            console.log(err);
-        } else if (rows) {
-            console.log(rows);
-        } else {
-            res.send("nothing here");
-        }
-    });
-} catch(err) {
-    console.log(err)
-}
-*/

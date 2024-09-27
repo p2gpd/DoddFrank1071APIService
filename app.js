@@ -26,6 +26,20 @@ const authentication = function (req, res, next) {
 app.use(authentication)
 app.use(express.json())
 
+/* ../lookup route handler */
+app.get("/lookup", async (req, res) => {
+    logger.info( "/lookup called")
+    const lookupData = await dbapi.getAllLookupData()
+    let collection = []
+    collection.push( {name: "gender", data: lookupData[0]} )
+    collection.push( {name: "hispanicOrigin", data: lookupData[1]} )
+    collection.push( {name: "asianOrigin", data: lookupData[2]} )
+    collection.push( {name: "blackOrigin", data: lookupData[3]} )
+    collection.push( {name: "hawaiianPacificOrigin", data: lookupData[4]} )
+
+    res.json({ lookupData: collection }).status(200);
+})
+
 /* ../custid route handler */
 app.get("/custid", async (req, res) => {
     logger.info( "/custid called")

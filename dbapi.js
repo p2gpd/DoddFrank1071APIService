@@ -3,6 +3,100 @@ import logger from './logger.js'
 
 class DbApi {
     constructor(){}
+    getGenderLookupData = async function() {
+        try {
+            let data = await new Promise((resolve, reject)=>
+                conn.connect().then(() => {
+                    return conn.query`select genderCode, genderName from regulationDb.dbo.Genders`
+                }).then(result => {
+                    resolve(result.recordset)
+                }).catch(err => {
+                if (err) reject(err) 
+                })
+            )
+            conn.close()
+            return data
+        } catch (error) {
+            throw error
+        }
+    }
+    getHispanicOriginLookupData = async function() {
+        try {
+            let data = await new Promise((resolve, reject)=>
+                conn.connect().then(() => {
+                    return conn.query`select originCountryCode, originCountry from regulationDb.dbo.HispanicOrigin`
+                }).then(result => {
+                    resolve(result.recordset)
+                }).catch(err => {
+                if (err) reject(err) 
+                })
+            )
+            conn.close()
+            return data
+        } catch (error) {
+            throw error
+        }
+    }
+    getAsianOriginLookupData = async function() {
+        try {
+            let data = await new Promise((resolve, reject)=>
+                conn.connect().then(() => {
+                    return conn.query`select originCountryCode, originCountry from regulationDb.dbo.AsianOrigin`
+                }).then(result => {
+                    resolve(result.recordset)
+                }).catch(err => {
+                if (err) reject(err) 
+                })
+            )
+            conn.close()
+            return data
+        } catch (error) {
+            throw error
+        }
+    }
+    getBlackOriginLookupData = async function() {
+        try {
+            let data = await new Promise((resolve, reject)=>
+                conn.connect().then(() => {
+                    return conn.query`select originCountryCode, originCountry from regulationDb.dbo.BlackOrigin`
+                }).then(result => {
+                    resolve(result.recordset)
+                }).catch(err => {
+                if (err) reject(err) 
+                })
+            )
+            conn.close()
+            return data
+        } catch (error) {
+            throw error
+        }
+    }
+    getAllLookupData = async function() {
+        return Promise.all([
+            this.getGenderLookupData(),
+            this.getHispanicOriginLookupData(),
+            this.getAsianOriginLookupData(),
+            this.getBlackOriginLookupData(),
+            this.getHawaiianPacificOriginLookupData()
+        ])
+    }
+    getHawaiianPacificOriginLookupData = async function() {
+        try {
+            let data = await new Promise((resolve, reject)=>
+                conn.connect().then(() => {
+                    return conn.query`select originCountryCode, originCountry from regulationDb.dbo.HawaiianPacificOrigin`
+                }).then(result => {
+                    resolve(result.recordset)
+                }).catch(err => {
+                if (err) reject(err) 
+                })
+            )
+            conn.close()
+            return data
+        } catch (error) {
+            throw error
+        }
+    }
     addBusinessOwnershipMetrics = async function (businessOwnershipMetrics) {
         try {
             let data = await new Promise((resolve, reject)=>
