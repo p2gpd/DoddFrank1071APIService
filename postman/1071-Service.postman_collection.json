@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "a776c061-e393-4e7e-b924-4834ce331e96",
+		"name": "1071-Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30199227"
+	},
+	"item": [
+		{
+			"name": "get new customer identifier",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "AGF1071APIKEY",
+						"value": "AGFIRST-123ABC",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"loanNumber\": 111111111\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{PROTOCOL}}://{{HOST}}:{{PORT}}/custid",
+					"protocol": "{{PROTOCOL}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"custid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add business ownership metrics",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "AGF1071APIKEY",
+						"value": "AGFIRST-123ABC",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cust1071Idenitifier\": \"F161E9EE-B3ED-4A5A-806C-AAF5599D6B39-111111111\", \r\n    \"statusCode\": 2, \r\n    \"numPrincipals\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{PROTOCOL}}://{{HOST}}:{{PORT}}/metrics",
+					"protocol": "{{PROTOCOL}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add business owner demographics",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "AGF1071APIKEY",
+						"value": "AGFIRST-123ABC",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cust1071Idenitifier\": \"F161E9EE-B3ED-4A5A-806C-AAF5599D6B39-111111111\", \r\n\t\"ofHispanicEthnicity\": 1,\r\n\t\"hispanicEthnicityOriginCode\": 3,\r\n\t\"hispanicEthnicityOriginOther\": \"\",\r\n\t\"notHispanic\": 0,\r\n\t\"doesNotWishToProvideEthnicity\": 0,\r\n\t\"genderCode\": 2,\r\n\t\"genderOther\": \"\",\r\n\t\"doesNotWishToProvideGender\": 0,\r\n\t\"americanIndianAlaskaNative\": 0, \r\n\t\"ofAsianRace\": 0,\r\n\t\"asianOriginCode\": 0,\r\n\t\"asianOriginOther\": \"\",\r\n\t\"ofBlackRace\": 1,\r\n\t\"blackOriginCode\": 2,\r\n\t\"blackOriginOther\": \"\",\r\n\t\"ofHawaiianPacificRace\": 0,\r\n\t\"hawaiianPacificRaceOrigiCode\": 0,\r\n\t\"hawaiianPacificRaceOrigiOther\": \"\",\r\n\t\"ofWhiteRace\": 0,\r\n\t\"doesNotWishToProvideRace\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{PROTOCOL}}://{{HOST}}:{{PORT}}/owners",
+					"protocol": "{{PROTOCOL}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"owners"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
